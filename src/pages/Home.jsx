@@ -11,14 +11,13 @@ const Home = () => {
   const openSpots = spots.filter(spot => spot.isOpen).length;
   const totalSpots = spots.length;
 
-  // Hero background images for the slider
-  // Use a single wide image strip for seamless sliding
+  // Hero background images for the slider (custom: 2 dance + tourist spots)
   const heroImages = [
-    'https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/417142/pexels-photo-417142.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/417142/pexels-photo-417142.jpeg?auto=compress&cs=tinysrgb&w=1920'
+    'https://imgs.search.brave.com/ltBaBSPNbhzX3LThH4kRDgi_C7FVjGh__iY33vFOYQI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ibG9n/bWVkaWEudGVzdGJv/b2suY29tL2Jsb2cv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDcvZm9say1tdXNp/Yy1vZi1qaGFya2hh/bmQtNGVjZWU4MmMu/anBn',
+    'https://imgs.search.brave.com/aYLlGrHA7sTe-RAbHqsp9WACDmChB1XUjOtFsxU_3xI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8y/LzJmL0NoaGF1X05y/aXR5YV8oNikuanBn',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpL7wuwiM0-HPJzKygiip4k9rJqv0BM4RL6Q&s', // Betla National Park
+    'https://images.unsplash.com/photo-1506744038136-46273834b3fb', // fallback tourist
+    'https://images.unsplash.com/photo-1464983953574-0892a716854b', // fallback tourist
   ];
 
   // Sprite strip technique for seamless sliding
@@ -51,17 +50,23 @@ const Home = () => {
             {heroImages.map((img, idx) => (
               <div
                 key={img + idx}
-                className="h-full w-screen bg-cover bg-center opacity-30"
+                className="h-full w-screen bg-cover bg-center opacity-40 border-4 border-red-500"
                 style={{
                   backgroundImage: `url('${img}')`,
                   minWidth: '100vw',
                   minHeight: '100vh',
+                  backgroundColor: '#eee',
                 }}
-              />
+              >
+                {/* Fallback text for debugging */}
+                <noscript>
+                  <span className="text-red-700 bg-white p-2 block">Image failed to load</span>
+                </noscript>
+              </div>
             ))}
           </div>
         </div>
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-900 to-green-800 z-10" style={{opacity:0.7}} />
+  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-900 to-green-800 z-10" style={{opacity:0.35}} />
         <div className="relative z-20 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Discover the Beauty of 
