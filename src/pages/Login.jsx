@@ -8,26 +8,29 @@ const Login = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: '',
-    role: 'user'
+    password: ''
   });
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Simple demo authentication
+    let role = 'user';
+    if (
+      formData.email === 'admin123@gmail.com' &&
+      formData.password === 'admin'
+    ) {
+      role = 'admin';
+    }
+    // You can add more demo logins here if needed
     const user = {
       id: Math.random().toString(36).substr(2, 9),
       name: formData.name || formData.email.split('@')[0],
       email: formData.email,
-      role: formData.role
+      role
     };
-    
     login(user);
-    
-    if (user.role === 'admin' || user.role === 'forest_officer') {
+    if (role === 'admin') {
       navigate('/dashboard');
     } else {
       navigate('/');
@@ -79,6 +82,8 @@ const Login = () => {
               </div>
             )}
 
+            {/* ...existing code... */}
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 Email Address
@@ -117,27 +122,7 @@ const Login = () => {
               </div>
             </div>
 
-            {!isLogin && (
-              <div>
-                <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                  Account Type
-                </label>
-                <select
-                  id="role"
-                  name="role"
-                  value={formData.role}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                >
-                  <option value="user">Tourist/Visitor</option>
-                  <option value="forest_officer">Forest Officer</option>
-                  <option value="admin">Admin</option>
-                </select>
-                <p className="mt-1 text-xs text-gray-500">
-                  Forest Officers can manage tourist spot timings. Admins have full access.
-                </p>
-              </div>
-            )}
+            {/* ...existing code... */}
 
             <div>
               <button
@@ -165,9 +150,8 @@ const Login = () => {
             <div className="mt-6 bg-gray-50 rounded-lg p-4">
               <h3 className="text-sm font-medium text-gray-900 mb-2">Demo Accounts:</h3>
               <div className="text-xs text-gray-600 space-y-1">
-                <div>Tourist: any email with role "user"</div>
-                <div>Forest Officer: any email with role "forest_officer"</div>
-                <div>Admin: any email with role "admin"</div>
+                <div>Admin: <b>admin123@gmail.com</b> / <b>admin</b></div>
+                <div>Tourist: any other email/password</div>
               </div>
             </div>
           )}

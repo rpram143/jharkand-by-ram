@@ -8,6 +8,8 @@ import Explore from './pages/Explore';
 import Roomstay from './pages/Roomstay';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import AdminTourismManager from './pages/AdminTourismManager';
+import OfficerTourismManager from './pages/OfficerTourismManager';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
               <Route path="/roomstay" element={<Roomstay />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/admin" element={<AdminTourismManager />} />
+              <Route path="/officer" element={<OfficerTourismManager />} />
             </Routes>
           </div>
         </Router>

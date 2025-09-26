@@ -30,7 +30,7 @@ export const TouristSpotsProvider = ({ children }) => {
   };
 
   return (
-    <TouristSpotsContext.Provider value={{ spots, updateSpotStatus }}>
+    <TouristSpotsContext.Provider value={{ spots, setSpots, updateSpotStatus }}>
       {children}
     </TouristSpotsContext.Provider>
   );

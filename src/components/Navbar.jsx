@@ -67,6 +67,16 @@ const Navbar = () => {
                     {user.role.replace('_', ' ').toUpperCase()}
                   </span>
                 </div>
+                {user.role === 'admin' && (
+                  <Link to="/admin" className="bg-emerald-100 text-emerald-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-200 transition-colors">
+                    Admin
+                  </Link>
+                )}
+                {user.role === 'forest_officer' && (
+                  <Link to="/officer" className="bg-green-100 text-green-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-green-200 transition-colors">
+                    Officer
+                  </Link>
+                )}
                 {(user.role === 'admin' || user.role === 'forest_officer') && (
                   <Link to="/dashboard" className="bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 transition-colors">
                     Dashboard
@@ -125,6 +135,16 @@ const Navbar = () => {
                     <User className="h-5 w-5 text-gray-600" />
                     <span className="text-sm text-gray-700">{user.name}</span>
                   </div>
+                  {user.role === 'admin' && (
+                    <Link to="/admin" className="block bg-emerald-100 text-emerald-800 px-4 py-2 rounded-md text-sm text-center mb-1">
+                      Admin
+                    </Link>
+                  )}
+                  {user.role === 'forest_officer' && (
+                    <Link to="/officer" className="block bg-green-100 text-green-800 px-4 py-2 rounded-md text-sm text-center mb-1">
+                      Officer
+                    </Link>
+                  )}
                   {(user.role === 'admin' || user.role === 'forest_officer') && (
                     <Link to="/dashboard" className="block bg-emerald-600 text-white px-4 py-2 rounded-md text-sm text-center">
                       Dashboard
