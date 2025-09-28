@@ -73,11 +73,16 @@ const Navbar = () => {
                   </Link>
                 )}
                 {user.role === 'forest_officer' && (
-                  <Link to="/officer" className="bg-green-100 text-green-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-green-200 transition-colors">
-                    Officer
-                  </Link>
+                  <>
+                    <Link to="/officer" className="bg-green-100 text-green-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-green-200 transition-colors">
+                      Officer
+                    </Link>
+                    <Link to="/officer-dashboard" className="bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 transition-colors">
+                      Dashboard
+                    </Link>
+                  </>
                 )}
-                {(user.role === 'admin' || user.role === 'forest_officer') && (
+                {user.role === 'admin' && (
                   <Link to="/dashboard" className="bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-emerald-700 transition-colors">
                     Dashboard
                   </Link>
@@ -141,11 +146,16 @@ const Navbar = () => {
                     </Link>
                   )}
                   {user.role === 'forest_officer' && (
-                    <Link to="/officer" className="block bg-green-100 text-green-800 px-4 py-2 rounded-md text-sm text-center mb-1">
-                      Officer
-                    </Link>
+                    <>
+                      <Link to="/officer" className="block bg-green-100 text-green-800 px-4 py-2 rounded-md text-sm text-center mb-1">
+                        Officer
+                      </Link>
+                      <Link to="/officer-dashboard" className="block bg-emerald-600 text-white px-4 py-2 rounded-md text-sm text-center mb-1">
+                        Dashboard
+                      </Link>
+                    </>
                   )}
-                  {(user.role === 'admin' || user.role === 'forest_officer') && (
+                  {user.role === 'admin' && (
                     <Link to="/dashboard" className="block bg-emerald-600 text-white px-4 py-2 rounded-md text-sm text-center">
                       Dashboard
                     </Link>

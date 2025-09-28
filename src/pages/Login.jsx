@@ -16,11 +16,20 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let role = 'user';
+    let redirect = '/';
     if (
       formData.email === 'admin123@gmail.com' &&
       formData.password === 'admin'
     ) {
       role = 'admin';
+      redirect = '/dashboard';
+    } else if (
+      formData.email === 'officerlogin@gmail.com' &&
+      formData.password === 'jharkhand123'
+    ) {
+      role = 'forest_officer';
+      redirect = '/officer-dashboard';
+      localStorage.setItem('officerLoggedIn', 'true');
     }
     // You can add more demo logins here if needed
     const user = {
@@ -30,11 +39,7 @@ const Login = () => {
       role
     };
     login(user);
-    if (role === 'admin') {
-      navigate('/dashboard');
-    } else {
-      navigate('/');
-    }
+    navigate(redirect);
   };
 
   const handleInputChange = (e) => {

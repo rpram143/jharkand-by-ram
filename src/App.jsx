@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { TouristSpotsProvider } from './context/TouristSpotsContext';
 import Navbar from './components/Navbar';
+
 import Home from './pages/Home';
 import Explore from './pages/Explore';
 import Roomstay from './pages/Roomstay';
@@ -10,6 +11,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AdminTourismManager from './pages/AdminTourismManager';
 import OfficerTourismManager from './pages/OfficerTourismManager';
+import OfficerLogin from './pages/OfficerLogin';
+import OfficerDashboard from './pages/OfficerDashboard';
 
 function App() {
   return (
@@ -26,6 +29,8 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/admin" element={<AdminTourismManager />} />
               <Route path="/officer" element={<OfficerTourismManager />} />
+              <Route path="/officer-login" element={<OfficerLogin />} />
+              <Route path="/officer-dashboard" element={<OfficerDashboard />} />
             </Routes>
           </div>
         </Router>
